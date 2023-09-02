@@ -1,9 +1,5 @@
 # javascript-avanzado-unlpam
 
-## Instrucciones:
-- git clone https://github.com/lu4ult/javascript-avanzado-unlpam.git
-- cd javascrip-avanzado-unlpam
+## Ver Online:
 
-
-Ejecutar:
-node index.js
+https://lu4ult.github.io/javascript-avanzado-unlpam
