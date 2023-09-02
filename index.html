@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>JS Avanzado</title>
+</head>
+
+<body>
+    <h1>Ejercicio clase 3</h1>
+    <ul id="alumnosContainer"></ul>
+
+    <div id="formContainer">
+        <form id="formulario" onsubmit="handleForm(e)">
+            <input type="text" value="Nombre" id="nombre">
+            <input type="number" min="0" max="10" value="1" id="nota1">
+            <input type="number" min="0" max="10" value="1" id="nota2">
+            <input type="number" min="0" max="10" value="1" id="nota3">
+            <button type="submit" id="agregar">Agregar</button>
+            <button type="reset">Limpiar</button>
+        </form>
+    </div>
+
+    <a class="repoLink" href="https://github.com/lu4ult/javascript-avanzado-unlpam" target="_blank">
+        <img src="./imgs/github-logo.png">
+    </a>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

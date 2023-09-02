@@ -1,41 +1,60 @@
-let contactos = {
-    contactos: [],
+let alumnos = [];
 
-    mostrarCantidadContactos: function () {
-        return this.contactos.length
-    },
+function actualizarAlumnos() {
+    if (alumnos.length === 0) {
+        let alumnosContainer = document.getElementById('alumnosContainer');
+        alumnosContainer.innerHTML = '<li>Agregue el primer alumno!</li>';
+        return;
+    }
 
-    agregarContacto: function (nombre, apellido, codigoArea, numero, email) {
-        let nuevoContacto = {
-            nombre: nombre,
-            apellido: apellido,
-            codigoArea: parseInt(codigoArea),
-            numero: parseInt(numero),
-            email: email,
-        }
-        this.contactos.push(nuevoContacto);
-    },
+    let alumnosContainer = document.getElementById('alumnosContainer');
+    alumnosContainer.innerHTML = '';
+    alumnos.forEach((alumno, indice) => {
+        let plantillas = `<li>${alumno.nombre}: ${alumno.notas[0]}, ${alumno.notas[1]}, ${alumno.notas[2]} <button onclick="borrar(${indice})">X</button></li>`;
+        alumnosContainer.innerHTML += plantillas;
+    });
 
-    encontrarContactoPorNombre: function (nombreBuscado) {
-        let hallazgos = this.contactos.filter(e => e.nombre.toLowerCase().indexOf(nombreBuscado.toLowerCase()) >= 0);
-        return [...hallazgos];
-    },
-
-    //TODO: continuar...
-    actualizarContacto: function () {
-
-    },
-
-    eliminarContacto: function () {
-
+    if (alumnos.length >= 3) {
+        document.getElementById('agregar').disabled = true;
+    }
+    else {
+        document.getElementById('agregar').disabled = false;
     }
 }
 
-contactos.agregarContacto('Lautaro', 'Tourn', '2954', 692293, 'lautatourn@gmail.com');
-contactos.agregarContacto('Pepito');
-contactos.agregarContacto('John', 'Lennon', '011', '123456');
+function borrar(indice) {
+    alumnos.splice(indice, 1);
+    actualizarAlumnos();
+}
+
+function handleValidateForm(e) {
+    console.log(e.target.value);
+
+}
 
 
-console.log(contactos)
-console.log(`Cantidad de contactos: ${contactos.mostrarCantidadContactos()}`)
-console.log(contactos.encontrarContactoPorNombre('John'));
+function handleForm(e) {
+    e.preventDefault();
+
+    let nombre = document.getElementById('nombre').value;
+    let nota1 = document.getElementById('nota1').value || 0;
+    let nota2 = document.getElementById('nota2').value || 0;
+    let nota3 = document.getElementById('nota3').value || 0;
+
+    let nuevoAlumno = {
+        nombre: nombre,
+        notas: [nota1, nota2, nota3],
+    };
+
+    alumnos.push(nuevoAlumno);
+    actualizarAlumnos();
+}
+
+let formulario = document.getElementById('formulario');
+formulario.addEventListener('submit', (e) => {
+    handleForm(e);
+});
+
+window.onload = () => {
+    actualizarAlumnos();
+}
