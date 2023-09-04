@@ -1,5 +1,12 @@
 let alumnos = [];
 
+function Alumno(nombre, notas) {
+    this.nombre = nombre;
+    this.notas = notas;
+
+    this.regular = true;
+}
+
 function actualizarAlumnos() {
     if (alumnos.length === 0) {
         let alumnosContainer = document.getElementById('alumnosContainer');
@@ -27,11 +34,6 @@ function borrar(indice) {
     actualizarAlumnos();
 }
 
-function handleValidateForm(e) {
-    console.log(e.target.value);
-
-}
-
 
 function handleForm(e) {
     e.preventDefault();
@@ -41,10 +43,11 @@ function handleForm(e) {
     let nota2 = document.getElementById('nota2').value || 0;
     let nota3 = document.getElementById('nota3').value || 0;
 
-    let nuevoAlumno = {
-        nombre: nombre,
-        notas: [nota1, nota2, nota3],
-    };
+    // let nuevoAlumno = {
+    //     nombre: nombre,
+    //     notas: [nota1, nota2, nota3],
+    // };
+    let nuevoAlumno = new Alumno(nombre, [nota1, nota2, nota3]);
 
     alumnos.push(nuevoAlumno);
     actualizarAlumnos();
