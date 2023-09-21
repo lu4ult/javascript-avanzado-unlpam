@@ -12,19 +12,19 @@
     <h1>Tienda de Productos</h1>
     <div id="productos">
         <!-- Aquí se mostrarán los productos en imágenes -->
-        <div class="producto electronico" id="producto_0">
+        <div class="producto" id="producto_0">
             <img src="laptop.jpg" alt="Laptop">
             <p class="nombre">Laptop</p>
             <p class="precio">$1000</p>
             <p class="potencia">Potencia: 500W</p>
-            <button onclick="agregarAlCarrito(0)">Agregar al carrito</button>
+            <button data-tipo="electronico" data-index="0" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
         </div>
-        <div class="producto alimenticio" id="producto_1">
+        <div class="producto" id="producto_1">
             <img src="manzanas.jpeg" alt="Manzanas">
             <p class="nombre">Manzanas</p>
             <p class="precio">$2</p>
             <p class="caducidad">Fecha de Caducidad: 01/10/2023</p>
-            <button onclick="agregarAlCarrito(1)">Agregar al carrito</button>
+            <button data-tipo="alimenticio" data-index="1" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
         </div>
         <!-- Agregar más productos aquí -->
     </div>
@@ -33,6 +33,10 @@
         <ul id="lista-carrito">
             <!-- Aquí se mostrarán los productos en el carrito -->
         </ul>
+        <span id="total"></span>
+        <span id="cantidad"></span>
+
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
 
     </div>
     <script src="script.js"></script>

@@ -27,8 +27,8 @@ class ProductoAlimenticio extends Producto {
     alimentoPerecedero;
     constructor(nombre, precio, stock, fechaVencimiento, alimentoPerecedero) {
         super(nombre, precio, stock)
-        this.fechaVencimiento = this.fechaVencimiento;
-        this.alimentoPerecedero = this.alimentoPerecedero;
+        this.fechaVencimiento = fechaVencimiento;
+        this.alimentoPerecedero = alimentoPerecedero;
     }
     tipoAlimento() {
         let respuesta = "";
@@ -59,26 +59,39 @@ class Carrito {
         return this.productos.reduce((suma, curr) => suma + parseInt(curr.precio), 0);
     }
 
+    vaciarCarrito() {
+        this.productos = [];
+    }
+
 }
 
 //inicio de variables
 const carrito = new Carrito();
 
-function agregarAlCarrito(index) {
+function agregarAlCarrito(elemento) {
+    let index = elemento.getAttribute("data-index");
+    let tipo = elemento.getAttribute("data-tipo");
+
     //  console.log($(elemento).attr("data-nombre"));
     let nombreProducto = $("#producto_" + index + " .nombre").text();
-    let precio = $("#producto_" + index + " .precio").text();
+    let precio = $("#producto_" + index + " .precio").text().replace('$', '');
 
-    if ($("#producto_" + index).hasClass("electronico")) {
+    if (tipo === "electronico") {
         let potencia = $("#producto_" + index + " .potencia").text();
         let p1 = new ProductoElectronico(nombreProducto, precio, 1, potencia);
         carrito.agregarProducto(p1);
-    } else {
+    }
+    if (tipo === "alimenticio") {
         let fechaVencimiento = $("#producto_" + index + " .caducidad").text();
         let alimentoPerecedero = true;
         let p2 = new ProductoAlimenticio(nombreProducto, precio, 1, fechaVencimiento, alimentoPerecedero);
         carrito.agregarProducto(p2);
     }
+    mostrarCarrito();
+}
+
+function vaciarCarrito() {
+    carrito.vaciarCarrito();
     mostrarCarrito();
 }
 

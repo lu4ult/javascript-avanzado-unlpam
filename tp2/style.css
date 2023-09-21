@@ -1,3 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #productos {
     display: flex;
     flex-wrap: wrap;
@@ -18,4 +25,11 @@
 
 .producto img {
     max-width: 200px;
+}
+
+#carrito {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
