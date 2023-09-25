@@ -1,10 +1,12 @@
 let alumnos = [];
 
-function Alumno(nombre, notas) {
-    this.nombre = nombre;
-    this.notas = notas;
+class Alumno {
+    constructor(nombre, notas) {
+        this.nombre = nombre;
+        this.notas = notas;
 
-    this.regular = true;
+        this.regular = true;
+    }
 }
 
 function actualizarAlumnos() {
