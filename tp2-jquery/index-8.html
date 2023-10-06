@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        .yellow-background {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="opciones">
+        <option value="opcion1">Opción 1</option>
+        <option value="opcion2">Opción 2</option>
+        <option value="opcion3">Opción 3</option>
+    </select>
+    <div id="informacion"></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#opciones").change(function () {
+                let opcionSeleccionada = $(this).val();
+                let informacion = "";
+
+                switch (opcionSeleccionada) {
+                    case "opcion1":
+                        informacion = "Has seleccionado la Opción 1.";
+                        break;
+                    case "opcion2":
+                        informacion = "Has seleccionado la Opción 2.";
+                        break;
+                    case "opcion3":
+                        informacion = "Has seleccionado la Opción 3.";
+                        break;
+                    default:
+                        informacion = ""; // Limpiar el div si no se selecciona ninguna opción
+                }
+                $("#informacion").text(informacion);
+            });
+        });
+    </script>
+</body>
+
+</html>

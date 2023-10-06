@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        .rojo {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>Este es un párrafo.</p>
+        <ul>
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+        </ul>
+        <p>Otro párrafo.</p>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".container > p:first-child").addClass("rojo");
+            $(".container > p:last-child").addClass("rojo");
+        });
+    </script>
+</body>
+
+</html>
